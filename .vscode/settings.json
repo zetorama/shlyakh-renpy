@@ -6,6 +6,12 @@
     "**/cache/": true
   },
   "editor.tokenColorCustomizations": {
+    "[Default Dark+]": {
+      "comments": "#6a8a5d"
+    },
+    "[Quiet Light]": {
+      "keywords": "#a66"
+    },
     "textMateRules": [
       {
         "scope": "renpy.meta.plain",
@@ -113,9 +119,27 @@
         }
       },
       {
+        "scope": "renpy.meta.color.#700",
+        "settings": {
+          "foreground": "#700"
+        }
+      },
+      {
         "scope": "renpy.meta.color.#a00",
         "settings": {
           "foreground": "#a00"
+        }
+      },
+      {
+        "scope": "renpy.meta.color.#600",
+        "settings": {
+          "foreground": "#600"
+        }
+      },
+      {
+        "scope": "renpy.meta.color.#fee",
+        "settings": {
+          "foreground": "#fee"
         }
       }
     ]
