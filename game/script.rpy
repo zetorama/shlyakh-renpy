@@ -1,4 +1,4 @@
-# The script of the game goes in this file.
+﻿# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
@@ -55,7 +55,8 @@ label start:
     Wiz "Great! See you on [planet], where i'll be waiting together with Princess and planet’s Guardian. \nHave a smooth flight and a hyper-sleep. Good night, Star Captain."
 
     # show guardian signal-bad at right with easeinbottom
-    show guardian signal-clear at right with dissolve
+    # show guardian signal-clear at right with dissolve
+    show guardian signal-clear at right with easeinbottom
 
     Grd "Good night, sweetheart."
 
@@ -123,7 +124,7 @@ label catalyst:
 
         show dog default with dissolve
 
-        "\"So you must be a good boy\", thought Captain and offered a snack to this creature."
+        "«So you must be a good boy», thought Captain and offered a snack to this creature."
 
         show guardian default at right with moveinright
 
@@ -260,7 +261,7 @@ label climax_part1:
 
     Grd "(wtf?)"
 
-    Zkp "Злий чаклун мабуть знає що Принцеса летітиме звідси, і тому його хмарищи оточили нашу деревню. Отож я щойно бачив як вони заковтнули інший корабель."
+    Zkp "Злий чаклун мабуть знає що Принцеса летітиме звідси, і тому його хмарищи оточили нашу деревню. Отож я щойно бачив як вони проковтнули інший корабель."
 
     Zkp "Але є надія! Ось ці дві гайдамачки зможуть провести вас таємничим шляхом до нашого маленького космопорту."
 
@@ -272,13 +273,80 @@ label climax_part1:
 
     Grd "Нас усіх? Але як же Ви, Дідусю?"
 
-    Zkp "Як жеж то я покину свою паству? Треба комусь доглядати за моїми тваринками. Але не хвилюйя, в нас є запаси всього потрібного. Отож зараз головне врятувати Принцесу."
+    Zkp "Як жеж то я покину свою паству? Треба комусь доглядати за моїми тваринками. Але не хвилюйя, в нас є запаси всього потрібного. Отож зараз головне довезти Принцесу до безпеки. Бо вона – це майбутнє нашої планети."
 
     jump climax_part2
 
 label climax_part2:
     scene bg evacuation with wipeleft
-    "climax_part2"
+    show creatures at truecenter with dissolve
+
+    "Деревенський космопорт був переповнений усіма можливими істотами. І хоча [darkness] лише оточила деревню, гайдамачки попередили, що треба діяти швидко, але обережно."
+
+    show locals default at right with moveinright
+
+    "Гайдамачка Анфіса" "Тут навіть можуть бути шпигуни злого чаклуна, тому нам треба очепити Принцесу для надійності."
+
+    "Гайдамачка Динька" "Ми повинні дістатися до потягу «Авакація», тільки він зможете пролетіти крізь хмарищи. Але доведеться йти до іншого кінця космічного перону."
+
+    show guardian default at left with moveinleft
+
+    Grd "Здається, саме туди рухаються усі ці істоти."
+
+    # hide locals
+    # hide guardian
+    # with dissolve
+
+    scene bg evacuation-group at truecenter with dissolve:
+        easeout 3.0 zoom 1.2
+
+    "Всі разом вирушили до потягу «Авакація», але пробиратися крізь натовп істот було дуже складно. З кожним кроком Капітан відчував як щільніше стає натовп, як голосніші стають крики, як важче стає дихати."
+
+    scene bg evacuation-group at truecenter with dissolve:
+        easeout 4.0 zoom 1.4
+
+    "Побачивши Хоронительку та Принцесу деякі істоти поступалися дорогою, але інші наче скаженіли. Коли до «Авакації» залишалося всього ще декілька кроків, хтось зненацька схопив Капітана, який шов позаду групи."
+
+    show weirdo shadowed at center with vpunch
+
+    "Скаженіла істота" "Але навіщо ти туди йдеш? То несправжня принцеса! [darkness] врятує нас усіх."
+
+    menu:
+        "Відпусти негайно, істоте! То справжня Принцеса і ми веземо її до безпеки.":
+            "(Cap gets separated)"
+        "[darkness] – то лихо і хвороба. Сідай з нами на потяг і там тобі допоможуть!":
+            "(Cap gets separated)"
+
+    "Скаженіла істота" "Але, Капітане, ніхто нікуди не їде. Це останній потяг, але в ньому немає більше місця. Але не важливо, бо потяг не пройде крізь хмарищи…"
+
+    # play train-whistle
+
+    "Несподіваний гудок відволік Скаженілого, що дало Капітанові змогу вибратися. Він зміг прошмигнути крізь кілька інших істот, але ні Хоронительки з Принцесою, ані гайдамачок ніде не було бачити."
+
+    hide weirdo with dissolve
+
+    scene bg evacuation-alone at truecenter with dissolve:
+        easeout 10.0 zoom 1.6
+
+    "Зоряний Капітан зібрав усі свої почуття разом та крізь усе неможливе зміг почути плач Принцеси зовсім неподалік. Він намагався піти у тому напрямку, але рухатися стало майже неможливо."
+
+    # play train-double-whistle
+
+    "Коли гудок пролунав вдруге, здалося, що усе навколо почало притягуватися до потягу. Капітан був неспроможній протидіяти течії з істот, яка затягнула його до найближчого вагону."
+
+    "У той самий час потяг почав рухатися, і усі двері автоматично зачинилися. Щонайменш сотня живих істот була невзмозі потрапити до «Авакації»."
+
+    jump break_into_three
+
+label break_into_three:
+    "break_into_three"
+
+
+
+
+
+
+
 
 
 
