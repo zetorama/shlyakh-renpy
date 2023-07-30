@@ -15,7 +15,7 @@ define childhood_acc = 0
 define has_dog = False
 
 # Terms
-define darkness = '{size=+5}{color=#700}darkness{/color}{/size}'
+define darkness = '{size=+5}{color=#700}темрява{/color}{/size}'
 
 # Custom Transitions
 define quickfade = Fade(0.2, 0.0, 0.2)
@@ -151,8 +151,136 @@ label catalyst:
 
     label catalyst_end:
         Grd "We should fly low at the ground to get to a safe place as soon as possible. I know where to go, so let me drive."
+
         jump break_into_two
 
 label break_into_two:
-    scene black with wipeleft
-    "Act II"
+    scene bg outskirts with wipeleft
+
+    "Отже Зоряний Капітан разом з Хоронителькою та Принцесою вирушили до сховища, залишивши місто позаду."
+
+    show ship gliding at left with moveinright
+
+    "Але [darkness] шла по їх пятах. Злий чаклун дуже хотів знайти Принцесу. Він поширював свої хмарищи якнайдалі, сподіваючись знайти і захопити її якнайскоріше."
+
+    show darkness horizontal at right with moveinright
+    show ship gliding at offscreenleft
+    show darkness horizontal at offscreenleft
+    with moveinright
+
+    # arriving at zoo
+    scene bg zoo-ext-night with fade
+
+    "Майже вночі корабель Капітана прибув до деревні, що була відома своїм зоопарком."
+
+    show ship parked-left at left with moveinleft
+
+    "Хоронителька розповіла, що зоопарком керує Дід Зуглядач, і в нього Принцесі буде безпечно залишитись доки лихо не мине."
+
+    show zookeeper default at right with moveinright
+
+    Zkp "Отож почесні гості! Вітаю до нашого гайдамацького куреня."
+
+    jump rising_action
+
+label rising_action:
+    scene bg zoo-int-night with quickfade
+
+    "Усередині було багато тварин, і відчувалося дуже затишно."
+
+    show guardian default at left with moveinleft
+    Grd "Нарешті ми в безпеці. Принцеса і ми всі дуже дякуємо, Діду, що відразу запроновували їхати до Вас."
+
+    show zookeeper default at right with moveinright
+    Zkp "Нажаль, тут неможна довго залишатися. Хмарищи підступають до нашої деревні, і це питання часу доки вони знайдуть Принцесу. Отож спозаранку треба буде вирушати далі."
+    Zkp "Переночуйте з Принцесою в моїй кімнаті, а ми з Капітаном залишимось тут, поруч з моїми коровками."
+
+    Grd "(fuck)."
+
+    show zookeeper default at center
+    show guardian default at offscreenleft
+    with move
+
+    Zkp "Отож, Зоряний Капітане, дуже багато чув та чекав зустрітися за інших обставин. (something funny). Але вже запізно, і дорога була складна, час відпочивати."
+    Zkp "Розташовувайся зручніше у кораблі. А мені спочатку треба побажати надобраніч усім моїм тваринкам, та перевірити чи я не забув зачинити всі двері."
+
+    show zookeeper default at offscreenright with move
+
+    scene bg zoo-int-night with quickfade
+
+    "Капітан вже почав засинати, але раптом почув начебто хтось шепоче поруч з корабелем."
+
+    show locals shadowed at center with dissolve
+
+    "Shadows" "пшшш… шпп… хосмішний… шшппп… хорапель…"
+
+    menu:
+        "* Keep silence and watch carefully *":
+            "(Cap gets noticed)"
+        "* Turn on lights and call for Zookeeper *":
+            "(Cap gets noticed)"
+
+    show locals shadowed at left
+    show zookeeper default at right
+    with move
+
+    Zkp "Дивіться, хто знайшовся! Анфіса та Динька, друзі мої. Що ви там робите, га? Збираєте команду сміливих гайдамаків?"
+
+    show locals default at left with dissolve
+    show zookeeper default at center with move
+
+    Zkp "Отож не хвилюйся, Зоряний Капітане, то свої. Ми побалакаємо, а ти засинай, онучку. Я залишусь на варті до самого ранку."
+
+    show locals shadowed at offscreenleft
+    show zookeeper default at offscreenleft
+    with move
+
+    jump climax_part1
+
+label climax_part1:
+    scene bg zoo-int-morning with blinds
+    show zookeeper default at offscreenright
+    show locals default at offscreenright
+
+    "Ніч пройшла спокійно, та рано вранці Хоронителька та Принцеса повернулися до кораблю. Але Діда Зуглядача ніде не було видно."
+
+    show guardian default at center
+    show princess default at left
+    with moveinleft
+
+    Grd "Майже година пройшла, і мені ніяк не вдається знайти дідуся. Але я побачила хмарищи на підступах, тому нам варто вирушати якнайшвидше."
+
+    show guardian default at left
+    show princess default at offscreenleft
+    show zookeeper default at right
+    with moveinleft
+
+    Zkp "Заждіть! [darkness] дуже близько, вам не можна вирушати на космічному кораблі!"
+
+    Grd "(wtf?)"
+
+    Zkp "Злий чаклун мабуть знає що Принцеса летітиме звідси, і тому його хмарищи оточили нашу деревню. Отож я щойно бачив як вони заковтнули інший корабель."
+
+    Zkp "Але є надія! Ось ці дві гайдамачки зможуть провести вас таємничим шляхом до нашого маленького космопорту."
+
+    show zookeeper default at center
+    show locals default at right
+    with moveinleft
+
+    Zkp "Там ви зможете сісти на космічний потяг, що довезе вас усіх до іншої планети. Там Принцесі нічого більше не загрожуватиме."
+
+    Grd "Нас усіх? Але як же Ви, Дідусю?"
+
+    Zkp "Як жеж то я покину свою паству? Треба комусь доглядати за моїми тваринками. Але не хвилюйя, в нас є запаси всього потрібного. Отож зараз головне врятувати Принцесу."
+
+    jump climax_part2
+
+label climax_part2:
+    scene bg evacuation with wipeleft
+    "climax_part2"
+
+
+
+
+
+
