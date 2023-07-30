@@ -36,11 +36,11 @@ label start:
             "Star Captain."
             scene bg ship-int with quickfade
 
-    show wizard signal-bad at right with easeinbottom
+    show wizard signal-bad at center with easeinbottom
 
     "(over radio)" "Star Captain!… pssht…"
 
-    show wizard signal-clear at right with dissolve
+    show wizard signal-clear at center with dissolve
 
     Wiz "Pssht… Star Captain, this is Supreme Wizard calling you from our Centaurus system. Which planet are you traveling to?"
 
@@ -54,7 +54,8 @@ label start:
 
     Wiz "Great! See you on [planet], where i'll be waiting together with Princess and planet’s Guardian. \nHave a smooth flight and a hyper-sleep. Good night, Star Captain."
 
-    show guardian signal-clear at center with easeinbottom
+    # show guardian signal-bad at right with easeinbottom
+    show guardian signal-clear at right with dissolve
 
     Grd "Good night, sweetheart."
 
