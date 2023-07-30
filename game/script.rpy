@@ -3,11 +3,11 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-# define Cap = Character("Star Captain")
-define Wiz = Character(_("Wizard of Centaurus"), color = '#07a2f5')
-define Grd = Character("Guardian", color = '#fff200')
+# define Cap = Character("Зоряний Капітан")
+define Wiz = Character(_("Чарівник Центаврів"), color = '#07a2f5')
+define Grd = Character("Хоронителька", color = '#fff200')
 # define Prc = Character("Princess")
-define Zkp = Character("Zookeeper", color = '#0b3b85')
+define Zkp = Character("Дід Зуглядач", color = '#0b3b85')
 
 # Variables
 define planet = ''
@@ -16,6 +16,7 @@ define has_dog = False
 
 # Terms
 define darkness = '{size=+5}{color=#700}темрява{/color}{/size}'
+define by_darkness = '{size=+5}{color=#700}темрявою{/color}{/size}'
 
 # Custom Transitions
 define quickfade = Fade(0.2, 0.0, 0.2)
@@ -25,108 +26,113 @@ define lightning = Fade(0.2, 0.1, 0.1, color = '#a99')
 
 label start:
 
-    "Hey kid, look what i've got for you…"
-    "Imagine if that's a helmet of famous space hero. Who flies on his ship among stars and planets of Milky Way."
+    "Дивись, що в мене для тебе є…"
+    "Уяви собі, що цей шолом від костюму справжнього космічного героя. Він подорожує космічним кораблем між зірками та планетами Чумацього шляху."
 
     menu:
-        "On a space ship?":
+        "Подорожує космічним кораблем?":
             scene bg ship-int with quickfade
-            "Yes! On his space ship!"
-        "What's his name?":
-            "Star Captain."
+            "Так! В нього є свій власний космічний корабель."
+        "Справжній космічний герой?":
+            "Так! І звати його – Зоряний Капітан."
             scene bg ship-int with quickfade
 
     show wizard signal-bad at center with easeinbottom
 
-    "(over radio)" "Star Captain!… pssht…"
+    "(РАДІО)" "Зоряний Капітане!… пшшшт…"
 
     show wizard signal-clear at center with dissolve
 
-    Wiz "Pssht… Star Captain, this is Supreme Wizard calling you from our Centaurus system. Which planet are you traveling to?"
+    Wiz "пшшшт… Зоряний Капітане, це дзвонить Верховний Чарівник з системи Центаврів. До якої планети ви вирушаєте?"
 
     menu:
-        "Planet Alpha":
-            $ planet = 'Alpha'
-        "Planet Beta":
-            $ planet = 'Beta'
-        "Planet Gamma":
-            $ planet = 'Gamma'
+        "До планети Альфа":
+            $ planet = 'Альфа'
+        "До планети Бета":
+            $ planet = 'Бета'
 
-    Wiz "Great! See you on [planet], where i'll be waiting together with Princess and planet’s Guardian. \nHave a smooth flight and a hyper-sleep. Good night, Star Captain."
+    Wiz "Чудово! Побачимося на планеті [planet], де я чекатиму разом із Принцесою та Хоронителькою планети. \Гарного польоту та гіпер-сну. Надобраніч, Зоряний Капітане."
 
-    # show guardian signal-bad at right with easeinbottom
-    # show guardian signal-clear at right with dissolve
-    show guardian signal-clear at right with easeinbottom
+    show guardian signal-bad at right with easeinbottom
+    show guardian signal-clear at right with dissolve
+    # show guardian signal-clear at right with easeinbottom
 
-    Grd "Good night, sweetheart."
+    Grd "Надобраніч, сонечко."
 
     jump catalyst
 
 label catalyst:
     scene black with pixellate
 
-    "And so Star Captain went to planet [planet] of Centaurus system. His hyper-sleep was smooth, but landing was not…"
+    "І ось, Зоряний Капітан вирушив до планети [planet], що є у системі Центаврів. Його гіпер-сон пройшов спокійно, але посадка - не дуже…"
 
     scene bg ship-landed with hpunch
 
-    "Star Captain was still in his hyper-sleep, when space ship almost crushed at the cosmoport. Nobody expected to see Captain that early, except just one person."
+    "Зоряний Капітан ще перебував у гіпер-сні, коли його корабель зробив аварійну посадку у космопорті призначення. Він прибув зарано, та його ніхто не очікував у цей час. \nЗокрема одної особи…"
 
     show guardian default with moveinright
 
-    Grd "Captain, this is Guardian. Please respond!"
+    Grd "Капітане, це Хоронителька. Будь ласка, відповісить."
 
     menu:
-        "This is Star Captain. What’s happened?":
+        "Говорить Зоряний Капітан. Що трапилося?":
             $ childhood_acc += 1
-        "Please, five minutes more.":
+        "Будь ласка, ще пʼять хвилиночок…":
             show bg ship-landed with vpunch
 
-    Grd "There's no time, Captain! Something bad happened to our planet."
-    Grd "Evil mage has summoned an illness on our lands. That’s why skies are red and everyone under it is in danger. \nPrincess needs your help, Captain!"
+    Grd "Немає зовсім часу, Капітане! Щось жахливе трапилося з нашою планетою."
+    Grd "Злий чаклун скликав страшну хворобу на нашу неньку. Це через неї небо червоне, це вони заважали кораблеві при посадці."
+    Grd "Але Капітане! Принцеса потребує Вашої допомоги!"
 
     menu:
-        "I’ll beat the evil mage!":
+        "Я переможу злого чаклуна!":
             $ childhood_acc -= 1
-        "I’ll save the princess!":
+        "Я врятую принцесу!":
             $ childhood_acc += 1
 
-    Grd "Of course, sweetheart. We are lucky that you're with us. \nI wish Supreme Wizard was here too, but he left early to protect city from the illness."
-    Grd "We should take the ship and go to a safer place. I can bring fuel, and you, Captain, need to keep Princess safe. It won't take long."
+    Grd "Звісно, сонечко. Нам дуже пощастило, шо Ви з нами, Капітане. \nНажаль наш Верховний Чарівник не зміг також бути тут. Він мусив вирушати якнайскоріше, щоб захистити місто від тієї хвороби."
+
+
+    Grd "Нам треба вирушати до безпечного місця. Я зможу принести потрібного палива для корабля, а Ви, Капітане, захищайте Принцесу поки мене нема. Це не займе багато часу"
 
     show princess default at right with moveinright
-    hide guardian with dissolve
+    show guardian at offscreenleft with move
 
-    "Guardian gave a signal, and Princess came out from behind her. Then she boarded a real space ship for the first time in her life. \nBut she was not excited. She was scared."
+    "Хоронителька подался по паливо, а Принцеса піднялася на борт."
+
+    hide princess with dissolve
+
+    "Вперше в своєму житті вона була на справжньому космічному кораблі. Але зараз то викликало в неї не захоплення, а тільки страх."
 
     scene bg ship-landed with fade
 
-    "Some time has passed. Thick red clouds were getting closer and closer. Everything under was eaten by [darkness]."
-    "Suddenly, lightning stroke from the skies. It turned out there was a huge shadow standing just behind the ship."
+    "Минув деякий час. Густі червоні хмари наближувалися все ближче й ближче до міста. Усе, що залишалося під тіма хмарищами, було наче з’їдено [by_darkness]."
+    "Раптом з неба вдарила блискавка. Все навколо висвітлилося лише на момент. \nЦього було достатньо, шоб побачити величезну тінь, що затоїлася за космічним кораблем."
 
     show dog shadowed with lightning
 
-    "Shadow" "Agrhh…"
+    "Темна істота" "Аггррххффф"
 
     menu:
-        "Hello [planet] creature, my name is Star Captain. What is your name?":
+        "Доброго ранку, істота планети [planet]. Мене звати Зоряний Капітан, а тебе як?":
             $ childhood_acc += 1
             jump meet_dog
-        "* Shoot at creature with sound blast gun. *":
+        "* Вистрелити по істоті звуковою гарматою з корабля. *":
             $ childhood_acc -= 1
             jump lose_dog
 
     label meet_dog:
         show dog shadowed at left with move
 
-        "Captain slowly stepped towards shadow and got surprised to notice how it started wiggling with his two tails."
+        "Капітан повільно підійшов до Темної істоти та з подивом помітив, як та почала ворушити свома двома хвостами."
 
         show dog default with dissolve
 
-        "«So you must be a good boy», thought Captain and offered a snack to this creature."
+        "«Диви який гарний песик», подумав Капітан та запронував істоті частину свого сніданку."
 
         show guardian default at right with moveinright
 
-        Grd "Looks like you have found a new friend, Captain! \nLet's bring him on the ship with us and get out of here."
+        Grd "Схоже, ви знайшли нового друга, Капітане! \nМи можемо взяти його з собою на корабель, але треба забиратися звідси."
 
         $ has_dog = True
 
@@ -141,16 +147,16 @@ label catalyst:
         show dog default at right with move
         show dog shadowed at offscreenleft with move
 
-        "Sound has blasted from the ship breaking silence like shattering glass. Out of shock creature has jumped back and immediately retired. Princess started crying."
+        "Звук вибухнув із гармати корабля, розбиваючи тишу наче скло. Від шоку істота відскочила і негайно втекла назад до темряви. Принцеса почала плакати."
 
         show guardian default at center with moveinright
 
-        Grd "It's all good, Princess. Guardian is here! \nCaptain, that was… let's just get out of here."
+        Grd "Все добре, Принцесо. Хоронителька вже тут! \nКапітане, то було… але неважливо, нам треба забиратися звідси."
 
         jump catalyst_end
 
     label catalyst_end:
-        Grd "We should fly low at the ground to get to a safe place as soon as possible. I know where to go, so let me drive."
+        Grd "Ми повинні летіти низько над землею, щоб якнайшвидше дістатися безпечного місця. Я знаю, куди їхати, тож дозвольте мені сісти за кермо."
 
         jump break_into_two
 
