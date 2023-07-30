@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Пригоди Зоряного Капітана")
+define config.name = _("Шлях до надії")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set

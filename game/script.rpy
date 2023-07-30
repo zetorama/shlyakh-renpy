@@ -7,7 +7,7 @@
 define Wiz = Character(_("Чарівник Центаврів"), color = '#07a2f5')
 define Grd = Character("Хоронителька", color = '#fff200')
 # define Prc = Character("Princess")
-define Zkp = Character("Дід Зуглядач", color = '#0b3b85')
+define Zkp = Character("Дід Зуглядач", color = '#0b7bb7')
 
 # Variables
 define planet = ''
@@ -191,16 +191,18 @@ label break_into_two:
 
 label rising_action:
     scene bg zoo-int-night with quickfade
+    show ship parked-left at right:
+        zoom 0.8
 
     "Усередині було багато тварин, і відчувалося дуже затишно."
 
     show guardian default at left with moveinleft
-    Grd "Нарешті ми в безпеці. Принцеса і ми всі дуже дякуємо, Діду, що відразу запроновували їхати до Вас."
+    Grd "То була важка подорож, але нарешті ми в безпеці. \nПринцеса і ми всі дуже дякуємо, Дідусю, що відразу запроновували їхати до Вас."
 
     show zookeeper default at right with moveinright
     Zkp "Нажаль, тут неможна довго залишатися. Хмарищи підступають до нашої деревні, і це питання часу доки вони знайдуть Принцесу. Отож спозаранку треба буде вирушати далі."
 
-    Grd "Ви праві, Дідусю. Мені дуже прикро що так сталося та Вам доведеться залишати своїх тварин на деякий час."
+    Grd "О ні! Проте Ви праві, Дідусю. Мені дуже прикро що так сталося та Вам доведеться залишити своїх тварин на деякий час."
 
     Zkp "Так так. Отож переночуйте з Принцесою в моїй кімнаті, а ми з Капітаном залишимось тут, поруч з моїми коровками."
 
@@ -214,19 +216,19 @@ label rising_action:
 
     show zookeeper default at offscreenright with move
 
-    scene bg zoo-int-night with quickfade
+    hide zookeeper with fade
 
     "Капітан вже почав засинати, але раптом почув начебто хтось шепоче поруч з корабелем."
 
     show locals shadowed at center with dissolve
 
-    "Shadows" "пшшш… шпп… хосмішний… шшппп… хорапель…"
+    "Якісь тіні" "пшшш… шпп… хосмішний… шшппп… хорапель…"
 
     menu:
-        "* Keep silence and watch carefully *":
-            "(Cap gets noticed)"
-        "* Turn on lights and call for Zookeeper *":
-            "(Cap gets noticed)"
+        "* Зберігати тишу і слідкувати за тінями *":
+            "Капітан зачаївся, але одна з тіней помітила щось і спробувала відкрити корабель. Нащастя в той самий момент повернувся Дід Зуглядач."
+        "* Включити світло, та покликати Дідуся *":
+            "Тіні злякалася світла та відступили до виходу. Але Дідусь зʼявився тут як тут, та перегородив шлях втікачам."
 
     show locals shadowed at left
     show zookeeper default at right
@@ -239,14 +241,16 @@ label rising_action:
 
     Zkp "Отож не хвилюйся, Зоряний Капітане, то свої. Ми побалакаємо, а ти засинай, онучку. Я залишусь на варті до самого ранку."
 
-    show locals shadowed at offscreenleft
+    show locals default at offscreenleft
     show zookeeper default at offscreenleft
     with move
 
     jump climax_part1
 
 label climax_part1:
-    scene bg zoo-int-morning with blinds
+    scene bg zoo-int-morning with dissolve
+    show ship parked-left at right:
+        zoom 0.8
     show zookeeper default at offscreenright
     show locals default at offscreenright
 
@@ -279,13 +283,20 @@ label climax_part1:
 
     Grd "Нас усіх? Але як же Ви, Дідусю?"
 
-    Zkp "Як жеж то я покину свою паству? Треба комусь доглядати за моїми тваринками. Але не хвилюйя, в нас є запаси всього потрібного. Отож зараз головне довезти Принцесу до безпеки. Бо вона – це майбутнє нашої планети."
+    Zkp "Як жеж то я покину свою паству? Треба комусь доглядати за моїми тваринками. Але не хвилюйся, в нас є запаси всього потрібного. Отож зараз головне довезти Принцесу до безпеки. Бо вона – це майбутнє нашої планети."
 
     jump climax_part2
 
 label climax_part2:
-    scene bg evacuation with wipeleft
-    show creatures at truecenter with dissolve
+    scene black with fade
+    scene bg evacuation with fade
+    show civilians leaving at center
+    show civilians leaving at center:
+        block:
+            linear 0.3 xalign 0.5 yalign 1.1
+            linear 0.3 xalign 0.55 yalign 1.0
+            linear 0.3 xalign 0.45 yalign 0.95
+            repeat
 
     "Деревенський космопорт був переповнений усіма можливими істотами. І хоча [darkness] лише оточила деревню, гайдамачки попередили, що треба діяти швидко, але обережно."
 
@@ -293,52 +304,92 @@ label climax_part2:
 
     "Гайдамачка Анфіса" "Тут навіть можуть бути шпигуни злого чаклуна, тому нам треба очепити Принцесу для надійності."
 
-    "Гайдамачка Динька" "Ми повинні дістатися до потягу «Авакація», тільки він зможете пролетіти крізь хмарищи. Але доведеться йти до іншого кінця космічного перону."
+    "Гайдамачка Динька" "Ми повинні дістатися до потягу «Авакація», тільки він зможете пролетіти крізь хмарищи. Але посадка йде з іншого кінця космічного перону."
 
     show guardian default at left with moveinleft
 
     Grd "Здається, саме туди рухаються усі ці істоти."
 
-    # hide locals
-    # hide guardian
-    # with dissolve
+    hide locals
+    hide guardian
+    with dissolve
 
-    scene bg evacuation-group at truecenter with dissolve:
-        easeout 3.0 zoom 1.2
+    # scene bg evacuation-group at truecenter with dissolve:
+    show bg evacuation at center with dissolve:
+        easeout 10.0 zoom 1.2
+
+    show civilians leaving at center with move:
+        linear 0.5 xalign 0.5 yalign 1.1
+        linear 0.5 xalign 0.55 yalign 1.0
+        linear 0.5 xalign 0.45 yalign 0.95
+        easeout 0.5 zoom 1.05
+        repeat
 
     "Всі разом вирушили до потягу «Авакація», але пробиратися крізь натовп істот було дуже складно. З кожним кроком Капітан відчував як щільніше стає натовп, як голосніші стають крики, як важче стає дихати."
 
-    scene bg evacuation-group at truecenter with dissolve:
-        easeout 4.0 zoom 1.4
+    # scene bg evacuation-group at truecenter with dissolve:
+    show bg evacuation at center with dissolve:
+        easeout 10.0 zoom 1.4
 
     "Побачивши Хоронительку та Принцесу деякі істоти поступалися дорогою, але інші наче скаженіли. Коли до «Авакації» залишалося всього ще декілька кроків, хтось зненацька схопив Капітана, який шов позаду групи."
 
-    show weirdo shadowed at center with vpunch
+    show civilians leaving at center with move:
+        easeout 0.1 zoom 1.3
+        linear 0.5 xalign 0.5 yalign 1.1
+        linear 0.5 xalign 0.55 yalign 1.0
+        linear 0.5 xalign 0.45 yalign 0.95
+        repeat
+
+    show weirdo shadowed at offscreenleft
+    show weirdo shadowed at center with vpunch:
+        linear 1.2 xalign 0.2
+        linear 1.2 xalign 0.23
+        repeat
 
     "Скаженіла істота" "Але навіщо ти туди йдеш? То несправжня принцеса! [darkness] врятує нас усіх."
 
     menu:
         "Відпусти негайно, істоте! То справжня Принцеса і ми веземо її до безпеки.":
-            "(Cap gets separated)"
+            "Скаженіла істота" "Хахаха, а хто мене врятує? "
         "[darkness] – то лихо і хвороба. Сідай з нами на потяг і там тобі допоможуть!":
-            "(Cap gets separated)"
+            "Скаженіла істота" "Хахаха, вас ніхто не врятує! "
 
     "Скаженіла істота" "Але, Капітане, ніхто нікуди не їде. Це останній потяг, але в ньому немає більше місця. Але не важливо, бо потяг не пройде крізь хмарищи…"
 
+    hide weirdo with lightning
     # play train-whistle
 
     "Несподіваний гудок відволік Скаженілого, що дало Капітанові змогу вибратися. Він зміг прошмигнути крізь кілька інших істот, але ні Хоронительки з Принцесою, ані гайдамачок ніде не було бачити."
 
     hide weirdo with dissolve
 
-    scene bg evacuation-alone at truecenter with dissolve:
-        easeout 10.0 zoom 1.6
+    show bg evacuation at center with dissolve:
+        easeout 10.0 zoom 1.8
 
     "Зоряний Капітан зібрав усі свої почуття разом та крізь усе неможливе зміг розчути плач Принцеси зовсім неподалік. Він намагався піти у тому напрямку, але рухатися стало майже неможливо."
 
     # play train-double-whistle
 
+    show civilians leaving at center with move:
+        easeout 0.5 zoom 2.0
+        linear 0.3 xalign 0.5 yalign 1.0
+        linear 0.2 xalign 0.45 yalign 0.85
+        linear 0.2 xalign 0.6 yalign 0.9
+        linear 0.3 xalign 0.4 yalign 0.8
+        repeat
+
     "Коли гудок пролунав вдруге, здалося, що усе навколо почало притягуватися до потягу. Капітан був неспроможній протидіяти течії з істот, яка затягнула його до найближчого вагону."
+
+    show bg evacuation at center with lightning:
+        easeout 10.0 zoom 2.2
+
+    show civilians leaving at center with move:
+        easeout 0.3 zoom 3.0
+        linear 0.2 xalign 0.5 yalign 1.0
+        linear 0.1 xalign 0.45 yalign 0.85
+        linear 0.1 xalign 0.6 yalign 0.9
+        linear 0.2 xalign 0.4 yalign 0.8
+        repeat
 
     "У той самий час потяг почав рухатися, і усі двері автоматично зачинилися. Щонайменш сотня живих істот була невзмозі потрапити до «Авакації»."
 
@@ -353,8 +404,22 @@ label break_into_three:
 
 label finale_action:
     scene bg train-int-blue with quickfade
+    show passengers1 at offscreenleft
+    show passengers2 at offscreenright
 
-    show passengers shadowed at center
+    show passengers1 leaving at left:
+        linear 0.5 xalign -0.05 yalign 1.1
+        linear 0.5 xalign -0.2 yalign 1.05
+        linear 0.5 xalign -0.1 yalign 1.2
+        linear 0.5 xalign -0.15 yalign 1.0
+        repeat
+
+    show passengers2 leaving at right:
+        linear 0.5 xalign 1.15 yalign 1.05
+        linear 0.5 xalign 1.20 yalign 1.2
+        linear 0.5 xalign 1.1 yalign 1.0
+        linear 0.5 xalign 1.25 yalign 1.1
+        repeat
 
     "Капітан стояв у вагоні все ще невзмозі порухатися. Він був оточений десятками різних істот, але відчуввалося наче він залишився один у всему всесвіті."
 
@@ -364,22 +429,24 @@ label finale_action:
 
     "Раптом хтось покликав Капітана. Йому здалося, що він впізнав голос Хоронительки. Але то була не вона."
 
-    show stuardess default at center with move
+    show stuardess default at center with moveinleft
 
-    "Бортпровідниця Любка" "Капітане! Зоряний Капітане, це так чудово, що я вас впізнала! Ми щойно отримали сігнал про допомогу від іншого потягу, «Авакації-3». Тільки Ви, Капітане, здатні їм допомогти."
+    "Бортпровідниця Любка" "Капітане! Зоряний Капітане, це так чудово, що я вас побачила! Ми щойно отримали сигнал про допомогу від іншого потягу, «Авакації-3». І ніхто інший невзмозі їм допомогти."
 
     menu:
         "Звісно я допоможу! Недарма мене кличуть Зоряний Капітане.":
-            "Бортпровідниця Любка" "(let's go!)"
+            "Бортпровідниця Любка" "Чудово! До того потягу потрапили хворі істоти, і їм негайно потрібно випити чарівного зілля, але в них його немає!"
+            "Бортпровідниця Любка" "Проте в нас ще залишилося зілля! Та ось ще є ракетний ранець, щоб дістатися до іншого потягу."
         "Але що я можу зробити? Як дістатися іншого потягу?":
-            "Бортпровідниця Любка" "(no worries!)"
+            "Бортпровідниця Любка" "Ось візьміть ракетний ранець, щоб дістатися до іншого потягу."
+            "Бортпровідниця Любка" "До того потягу потрапили хворі істоти, і їм негайно потрібно випити чарівного зілля. Нажаль в них його немає, проте в нас ще є!"
 
-    "Бортпровідниця Любка" "До того потягу потрапили хворі істоти, і їм негайно потрібно випити чарівного зілля. Але чомусь в них його немає."
-    "Бортпровідниця Любка" "Проте в нас ще залишилося зілля! Та ось ще є ракетний ранець, щоб дістатися до іншого потягу. Я вірю, Капітане, що Ви здатні опанувати силу вітру."
-    "Бортпровідниця Любка" "А нумо, розступіться, народе!"
+    "Бортпровідниця Любка" "Успіху, Капітане! Тільки Ви здатні опанувати силу вітру. \nА нумо, розступіться, народе!"
 
-    scene bg train-int-blue at right with dissolve:
-        easeout 10.0 zoom 1.4
+    # scene bg train-int-blue at right with dissolve:
+    #     easeout 10.0 zoom 1.4
+
+    hide stuardess with dissolve
 
     "І ось Зоряний Капітан, взявши склянку зілля, ракетний ранець та усю свою хоробрість вирушив до єдиного шлюза у потязі. Почувши Бортпровідницю, усі істоти всередині почали розступатися як могли."
 
@@ -388,7 +455,7 @@ label finale_action:
 
     pause 1.0
 
-    "Для Капітана то був не перший політ із ракетним ранцем, але потяги ще не вийшли з атмосфери, і тому шли на повному ходу. Це було дуже небезпечно."
+    "Для Капітана то був не перший політ із ракетним ранцем. Потяги все ще не вийшли з атмосфери, і тому шли на повному ходу. Це було дуже небезпечно."
 
     # show flying cap
 
@@ -396,18 +463,35 @@ label finale_action:
 
     "Але він впорався."
 
+    show passengers1 at offscreenleft
+    show passengers2 at offscreenright
     show bg train-int-yellow with hpunch
 
-    show passengers shadowed at center
+    show passengers1 leaving at left:
+        linear 0.5 xalign -0.05 yalign 1.1
+        linear 0.5 xalign -0.2 yalign 1.05
+        linear 0.5 xalign -0.1 yalign 1.2
+        linear 0.5 xalign -0.15 yalign 1.0
+        repeat
 
-    show stuardess default at center with move
+    show passengers2 leaving-with-hope at right:
+        linear 0.5 xalign 1.15 yalign 1.05
+        linear 0.5 xalign 1.20 yalign 1.2
+        linear 0.5 xalign 1.1 yalign 1.0
+        linear 0.5 xalign 1.25 yalign 1.1
+        repeat
+
+    show stuardess default at center with moveinleft
 
     "Бортпровідниця Вірка" "Зоряний Капітане! Я Бортпровідниця Вірка, вітаю Вас на борту «Авакації-3». Я щойно розподілила чарівне зілля, і усім хворим вже стало краще!"
     "Бортпровідниця Вірка" "Ох недарма вас кличуть Зоряним Капітаном. Ми усі вам дуже вдячні! Чудова робота, Капітане!"
 
-    "І раптом…"
+    hide stuardess with dissolve
 
-    show guardian and-princess at left with moveinleft
+    # "І раптом…"
+
+    show guardian and-princess at right with moveinright:
+        zoom 1.2
 
     Grd "Чудова робота, сонечко!"
 
@@ -418,7 +502,10 @@ label finale_action:
 label resolution:
     scene black with fade
     scene bg safe-station at center with fade:
-        easeout 15.0 zoom 1.2
+        easeout 60.0 zoom 2.0
+
+    show civilians arriving at center:
+        easeout 60.0 zoom 2.2
 
     "Наступного дня Зоряний Капітан, Хоронителька та Принцеса дісталися до іншої планети, де злий чаклун більше не загрожуватиме їм."
     "Втомлені та виснажені, вони рухалися без якогось визначеного напрямку разом із сотнями інших виснажених істот."
@@ -428,7 +515,7 @@ label resolution:
 
     "Кінець."
 
-    "Присвячується усім Зоряним Капітанам і Принцесам, шо втратили своє дитинство внаслідок рашістскької агресії."
+    "{i}Присвячується усім Зоряним Капітанам і Принцесам, шо втратили своє дитинство внаслідок рашістської агресії.{/i}"
 
     pause 1.0
     return
