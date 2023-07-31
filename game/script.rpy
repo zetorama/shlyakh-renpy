@@ -26,6 +26,8 @@ define lightning = Fade(0.2, 0.1, 0.1, color = '#a99')
 
 label start:
 
+    play music "cinematic-1-master.mp3" fadeout 3.0 fadein 1.0
+
     "Дивись, що в мене для тебе є…"
     "Уяви собі, що цей шолом від костюму справжнього космічного героя. Він подорожує космічним кораблем між зірками та планетами Чумацього шляху."
 
@@ -63,6 +65,8 @@ label start:
 
 label catalyst:
     scene black with pixellate
+
+    play music "<loop 90>cinematic-2-master.mp3" fadeout 1.0 fadein 1.0
 
     "І ось, Зоряний Капітан вирушив до планети [planet], що є у системі Центаврів. Його гіпер-сон пройшов спокійно, але посадка - не дуже…"
 
@@ -288,6 +292,9 @@ label climax_part1:
     jump climax_part2
 
 label climax_part2:
+
+    play music "voices-master.mp3" fadeout 1.0 fadein 1.0
+
     scene black with fade
     scene bg evacuation with fade
     show civilians leaving at center
@@ -357,7 +364,8 @@ label climax_part2:
     "Скаженіла істота" "Але, Капітане, ніхто нікуди не їде. Це останній потяг, але в ньому немає більше місця. Але не важливо, бо потяг не пройде крізь хмарищи…"
 
     hide weirdo with lightning
-    # play train-whistle
+
+    play sound "whistle-single.mp3"
 
     "Несподіваний гудок відволік Скаженілого, що дало Капітанові змогу вибратися. Він зміг прошмигнути крізь кілька інших істот, але ні Хоронительки з Принцесою, ані гайдамачок ніде не було бачити."
 
@@ -368,7 +376,7 @@ label climax_part2:
 
     "Зоряний Капітан зібрав усі свої почуття разом та крізь усе неможливе зміг розчути плач Принцеси зовсім неподалік. Він намагався піти у тому напрямку, але рухатися стало майже неможливо."
 
-    # play train-double-whistle
+    play sound "whistle-double.mp3"
 
     show civilians leaving at center with move:
         easeout 0.5 zoom 2.0
@@ -396,6 +404,8 @@ label climax_part2:
     jump break_into_three
 
 label break_into_three:
+    play music "<loop 18>general-master.mp3" fadeout 1.0 fadein 1.0
+
     scene bg trains with fade
 
     "Потяг набрав швидкості, та взмив до неба. Потім ще один, і ще один. Три «Авакації» покинули космопорт та прорвалися крізь хмарищи. Наступна зупинка повинна бути вже в безпеці."
@@ -455,7 +465,7 @@ label finale_action:
 
     pause 1.0
 
-    "Для Капітана то був не перший політ із ракетним ранцем. Потяги все ще не вийшли з атмосфери, і тому шли на повному ходу. Це було дуже небезпечно."
+    "Для Капітана то був не перший політ із ракетним ранцем. Але потяги все ще не вийшли з атмосфери, і тому шли на повному ходу. Це було дуже небезпечно."
 
     # show flying cap
 
@@ -500,6 +510,8 @@ label finale_action:
     jump resolution
 
 label resolution:
+    play music "end-credits-hotfix.mp3" loop
+
     scene black with fade
     scene bg safe-station at center with fade:
         easeout 60.0 zoom 2.0
