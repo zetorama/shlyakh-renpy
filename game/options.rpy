@@ -23,13 +23,18 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "1.0"
+define config.version = "1.1"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+Створено до гейм-джему {a=https://itch.io/jam/ukrainian-visual-novel-jam-3}Ukrainian Visual Novel Jam #3{/a}.
+
+• {a=https://www.instagram.com/_gingemar_/}Marianna{/a} – Малюнки та персонажі \n
+• {a=https://www.instagram.com/stahloliverba/}Oliver{/a} – Музика та вайб \n
+• {a=https://www.instagram.com/zetorama/}Pavlo{/a} – Історія та продакшн \n
 """)
 
 
