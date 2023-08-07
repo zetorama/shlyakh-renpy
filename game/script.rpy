@@ -3,11 +3,9 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-# define Cap = Character("Зоряний Капітан")
 define Wiz = Character(_("Чарівник Центаврів"), color = '#07a2f5')
-define Grd = Character("Хоронителька", color = '#fff200')
-# define Prc = Character("Princess")
-define Zkp = Character("Дід Зуглядач", color = '#0b7bb7')
+define Grd = Character(_("Хоронителька"), color = '#fff200')
+define Zkp = Character(_("Дід Зуглядач"), color = '#0b7bb7')
 
 # Variables
 define planet = ''

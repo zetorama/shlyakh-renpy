@@ -341,6 +341,19 @@ style navigation_button:
 style navigation_button_text:
     properties gui.button_text_properties("navigation_button")
 
+# Define a screen for the language button
+
+screen language_button():
+    # Use a horizontal box to align the buttons
+    vbox:
+        style_prefix "navigation"
+
+        yalign 1.0
+        xpos gui.navigation_xpos
+        textbutton _("English") action Function(renpy.change_language, "English")
+        spacing gui.navigation_spacing
+        textbutton _("Українська") action Function(renpy.change_language, None)
+
 
 ## Екран головного меню ########################################################
 ##
@@ -362,6 +375,8 @@ screen main_menu():
     ## Інструкція використання включає інший екран всередині цього. Фактичний
     ## вміст головного меню знаходиться на екрані навігації.
     use navigation
+
+    use language_button
 
     if gui.show_name:
 
@@ -674,11 +689,11 @@ screen file_slots(title):
 
                 if config.has_sync:
                     if CurrentScreenName() == "save":
-                        textbutton _("Завантажити Синхронізація"):
+                        textbutton _("Завантажити Синхронізацію"):
                             action UploadSync()
                             xalign 0.5
                     else:
-                        textbutton _("Завантажити Синхронізація"):
+                        textbutton _("Завантажити Синхронізацію"):
                             action DownloadSync()
                             xalign 0.5
 
@@ -1003,11 +1018,11 @@ screen help():
 screen keyboard_help():
 
     hbox:
-        label _("Увійдіть")
+        label _("Enter")
         text _("Розвиває діалог і активує інтерфейс.")
 
     hbox:
-        label _("Простір")
+        label _("Space")
         text _("Просуває діалог без вибору варіантів.")
 
     hbox:
@@ -1015,7 +1030,7 @@ screen keyboard_help():
         text _("Навігація по інтерфейсу.")
 
     hbox:
-        label _("Втеча")
+        label _("Escape")
         text _("Доступ до меню гри.")
 
     hbox:
@@ -1027,11 +1042,11 @@ screen keyboard_help():
         text _("Вмикає пропуск діалогу.")
 
     hbox:
-        label _("Перегорнути сторінку.")
+        label _("Page up")
         text _("Відкат до попереднього діалогу.")
 
     hbox:
-        label _("Перегорнути сторінку вниз.")
+        label _("Page down")
         text _("Перехід до наступного діалогу.")
 
     hbox:
