@@ -9,11 +9,13 @@ define Zkp = Character(_("Дід Зуглядач"), color = '#0b7bb7')
 
 # Variables
 define planet = ''
+define planet_en = ''
 define childhood_acc = 0
 define has_dog = False
 
 # Terms
 define darkness = '{size=+5}{color=#700}темрява{/color}{/size}'
+define darkness_en = '{size=+5}{color=#700}darkness{/color}{/size}'
 define by_darkness = '{size=+5}{color=#700}темрявою{/color}{/size}'
 
 # Custom Transitions
@@ -48,8 +50,10 @@ label start:
     menu:
         "До планети Альфа":
             $ planet = 'Альфа'
+            $ planet_en = 'Alpha'
         "До планети Бета":
             $ planet = 'Бета'
+            $ planet_en = 'Beta'
 
     Wiz "Чудово! Побачимося на планеті [planet], де я чекатиму разом із Принцесою та Хоронителькою планети. \Гарного польоту та гіпер-сну. Надобраніч, Зоряний Капітане."
 
@@ -525,7 +529,7 @@ label resolution:
 
     "Кінець."
 
-    "{i}Присвячується усім Зоряним Капітанам і Принцесам, шо втратили своє дитинство внаслідок рашістської агресії.{/i}"
+    "{i}Присвячується усім Зоряним Капітанам і Принцесам, шо втратили своє дитинство внаслідок російської агресії.{/i}"
 
     pause 1.0
     return
